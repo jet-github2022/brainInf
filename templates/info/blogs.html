@@ -1,0 +1,44 @@
+{% extends 'info/main.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container my-5">
+<div class="row">
+            <div class="col-md-6 mt-3">
+                <div class="card mb-5">
+                <img src="{{post.image.url}}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h2 class="card-title fs-bold">{{posts.title|safe}}</h2>
+                        <p class="card-text fs-4">{{posts.description|safe}}</p>
+                        <p class="card-text fs-4">{{posts.created_on}}</p>
+                        <p class="card-text fs-4">{{posts.author}}</p>
+                    </div>
+                    <div class="col-md-8 mt-3 p-4">
+                     {% with comments.count as total_comments %}
+                        <h2>{{ total_comments }}comment{{ total_comments|pluralize }}</h2>
+                        {% endwith %}
+                        {% for comment in comments %}
+                        Comment {{ forloop.counter }} by {{ comment.name }}
+                        on {{ comment.publish }}
+                        {{ comment.content|linebreaks }}
+                        {% empty %}
+                        <p>No comments for this blog post.</p>
+                        {% endfor %}
+                        <h2>Make a comment</h2>
+                        <form id="myform" method="post">
+                            {{ comment_form.as_p }}
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-dark">Submit</button>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+
+ {% block sidebar %} {% include 'info/sidebar.html' %} {% endblock sidebar %}
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'info/main.html' %}
+{% load static %}
+{% block content %}
+<div class="container my-5">
+<div class="row">
+            <div class="col-md-8 mt-3 left">
+                {% for post in posts %}
+                <div class="card mb-5 card shadow" >
+<!--                <img src="{{post.image.url}}" class="card-img-top"  alt="">-->
+                    <div class="card-body">
+                        <h2 class="card-title fs-bold">{{post.title|safe}}</h2>
+                        <p class="card-text fs-4">{{post.description|safe|truncatewords:20}}</p>
+                        <p class="card-text fs-4">{{post.created_on}}</p>
+                        <p class="card-text fs-4">{{post.author}}</p>
+                        <a href="/post/{{post.id}}" class="btn btn-primary fs-4">Read More &rarr;</a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+
+     {% block sidebar %} {% include 'info/sidebar.html' %} {% endblock sidebar %}
+
+</div>
+</div>
+
+ <section class="freelancer-available bg-dark py-5">
+        <div class="container-lg py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <p class="text-light fs-5">Do you have a Project?</p>
+                    <h2 class="fs-1 text-light mb-4">We are Available For Projects</h2>
+                    <a href="{% url 'contact' %}" class="btn btn-outline-light">Hire Us</a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+{% endblock content %}

@@ -1,0 +1,106 @@
+{% extends 'info/main.html' %}
+{% load static %}
+{% block content %}
+
+    <!-- contact form starts here -->
+
+        <section class="contact py-5 fs-4">
+        <div class="container-lg py-4">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                     {% for message in messages %}
+                     <div class="alert alert-success">
+                        {{message}}
+                     </div>
+                     {% endfor %}
+                    <div class="section-title text-center">
+                        <h1 class="fw-bold mb-5">Contact Us</h1>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="contact-item d-flex mb-3">
+                        <div class="icon fs-4 text-dark">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="text ms-3">
+                            <h3 class="fs-5">Email</h3>
+                            <p class="text-muted m-0">jetreyict@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item d-flex mb-3">
+                        <div class="icon fs-4 text-dark">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="text ms-3">
+                            <h3 class="fs-5">Phone</h3>
+                            <p class="text-muted m-0">09037178774</p>
+                        </div>
+                    </div>
+                    <div class="contact-item d-flex">
+                        <div class="icon fs-4 text-dark">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="text ms-3">
+                            <h3 class="fs-5">Our Office</h3>
+                            <p class="text-muted m-0">Shop No.4 Yahaya street, Dakwa.</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-7">
+                    <div class="contact-form">
+                        <form action="contact" method="post">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-lg-6 mb-4">
+                                    <input name="name" type="text" placeholder="your name"
+                                        class="form-control fs-4 shadow-lg">
+
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <input name="email" type="email" placeholder="your email"
+                                        class="form-control fs-4 shadow-lg">
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <input name="subject"  placeholder="your subject"
+                                        class="form-control fs-4 shadow-lg">
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <input name="number" type="number" placeholder="your number"
+                                        class="form-control fs-4 shadow-lg">
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-lg-12 mb-4">
+                                    <textarea name="message" placeholder="Your Message" rows="5"
+                                        class="form-control fs-4 shadow-lg"></textarea>
+                                </div>
+                            </div>
+
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                    <button type="submit" class=" btn btn-dark px-3">Send Message</button>
+                                </div>
+
+                            </div>
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+{% endblock content %}

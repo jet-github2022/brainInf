@@ -1,0 +1,57 @@
+
+{% extends 'info/main.html' %}
+{% load static %}
+
+
+{% block content %}
+
+{% for message in messages %}
+<div class="alert alert-success">
+    {{message}}
+</div>
+{% endfor %}
+<div class="container mt-3 mb-5">
+    <div class="row mt-5 mb-5">
+        <div class="col-lg-4 shadow p-4">
+            <h3>Sign Up</h3>
+            <form action="signup" method="post">
+                {% csrf_token %}
+                  <div class="mb-3">
+                    <label class="form-label">Username</label>
+                    <input  class="form-control" type="text" name="username" placeholder="Create your username (only letters and numbers)" required>
+                  </div>
+                 <div class="mb-3">
+                    <label class="form-label">First Name</label>
+                    <input class="form-control" type="text" name="fname" placeholder="Enter first name" required>
+                  </div>
+                 <div class="mb-3">
+                    <label class="form-label">Last Name</label>
+                    <input class="form-control" type="text" name="lname" placeholder="Enter your last name" required>
+                  </div>
+                 <div class="mb-3">
+                    <label class="form-label">Email</label>
+                    <input class="form-control" type="email" name="email" placeholder="Enter your email" required>
+                  </div>
+                 <div class="mb-3">
+                    <label class="form-label">Password</label>
+                    <input class="form-control" type="password" name="pass1" placeholder="Create your password" required>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label">Confirm Password</label>
+                    <input  class="form-control" type="password" name="pass2" placeholder="Conform your password" required>
+                  </div>
+                  <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            </form>
+           <p>Already have account? <a href="{% url 'login' %}" >Login</a></p>
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock content %}
+
+
+
+
+
